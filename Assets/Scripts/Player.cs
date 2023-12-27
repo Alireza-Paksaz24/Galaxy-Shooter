@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private int lives = 3;
+
+    [SerializeField] private GameObject enemy;
+    
     [SerializeField] private int _speed = 15;
 
     [SerializeField] private GameObject _Laser;
@@ -59,5 +64,18 @@ public class Player : MonoBehaviour
         }
 
         this.transform.Translate(vector);
+    }
+
+    public GameObject GetEnemy()
+    {
+        return enemy;
+    }
+    
+    public void Damage()
+    {
+        --lives;
+        Debug.Log(lives);
+        if (lives == 0)
+            Destroy(this.gameObject);
     }
 }
