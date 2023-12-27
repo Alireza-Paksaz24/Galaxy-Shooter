@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3139706291739920705}
   - component: {fileID: 4503827372285618311}
   - component: {fileID: 5059845829141191422}
-  - component: {fileID: 608797519888294983}
+  - component: {fileID: 2398699005933039224}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &608797519888294983
+--- !u!114 &2398699005933039224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +107,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6462464230683663037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6286d37aa5cdfc5282416986227da29, type: 3}
+  m_Script: {fileID: 11500000, guid: b279fc936e2515b12b4080be25408f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _Laser: {fileID: 8678842709161432281, guid: c80751c84addb9b43a4bd014b4e2358a, type: 3}
-  _fireRate: 0.5
