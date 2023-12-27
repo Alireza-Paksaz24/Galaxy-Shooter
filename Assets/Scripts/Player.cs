@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private int _speed = 15;
+    [SerializeField] private int _speed = 15;
 
-    [SerializeField] private GameObject _Lizer;
+    [SerializeField] private GameObject _Laser;
+
+    [SerializeField] private float _fireRate = 0.5f;
     
+    private float _nextFire = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,21 +21,23 @@ public class Player : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        if (Input.GetKeyDown(KeyCode.Space))
+        FireLaser();
+    }
+    
+    //cooldown for fire laser
+    private void FireLaser()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
         {
-            Instantiate(_Lizer, this.transform.position,Quaternion.identity);
+            _nextFire += _fireRate;
+            Instantiate(_Laser, this.transform.position + new Vector3(0, 0.7f, 0), Quaternion.identity);
         }
     }
     
     //move function for player
-    void MovePlayer()
+    private void MovePlayer()
     {
         var vector = new Vector3(0, 0, 0);
-        //<Study>
-        //GetAxis, is a method from Input class that return 0 till 1 float number that shows how much 
-        //player press the button.
-        //GetKey, is a method that return boolean, shows if player press the key or not.
-        //</Study>
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
         if (horizontal > 0.0f)
