@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
@@ -62,10 +63,19 @@ public class Player : MonoBehaviour
         {
             vector.y = _speed * vertical *Time.deltaTime;
         }
-
+        //Check if cube is outside of screen
         this.transform.Translate(vector);
-    }
+        if (this.transform.position.x >= 10.6)
+            this.transform.position = new Vector3(-10,transform.position.y,transform.position.z);
+        else if (this.transform.position.x <= -10)
+            this.transform.position = new Vector3(10.6f,transform.position.y,transform.position.z);
+        if (this.transform.position.y >= 6.4)
+            this.transform.position = new Vector3(transform.position.x,-5,transform.position.z);
+        else if (this.transform.position.y <= -5)
+            this.transform.position = new Vector3(transform.position.x,6.4f,transform.position.z);
 
+    }
+    
     public GameObject GetEnemy()
     {
         return enemy;
