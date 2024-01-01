@@ -16,11 +16,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _Laser;
 
     [SerializeField] private float _fireRate = 0.5f;
+
+    private SpawnManager _spawnManager;
     
     private float _nextFire = 0;
     // Start is called before the first frame update
     void Start()
     {
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class Player : MonoBehaviour
         }
     }
     
-    //move function for player
+    //move function for players
     private void MovePlayer()
     {
         var vector = new Vector3(0, 0, 0);
@@ -86,6 +89,10 @@ public class Player : MonoBehaviour
         --lives;
         Debug.Log(lives);
         if (lives == 0)
+        {
             Destroy(this.gameObject);
+
+            _spawnManager.OnPlayerDeath();
+        }
     }
 }
