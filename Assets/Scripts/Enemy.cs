@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
         {
             var player = other.transform.GetComponent<Player>();
             player.Damage();
-            Instantiate(player.GetEnemy());
             Destroy(this.gameObject);
         }
         else if (other.tag == "Laser")

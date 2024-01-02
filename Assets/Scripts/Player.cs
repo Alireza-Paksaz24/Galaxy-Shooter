@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
 {
     private int lives = 3;
 
-    [SerializeField] private GameObject enemy;
-    
     [SerializeField] private int _speed = 15;
 
     [SerializeField] private GameObject _Laser;
@@ -79,10 +77,6 @@ public class Player : MonoBehaviour
 
     }
     
-    public GameObject GetEnemy()
-    {
-        return enemy;
-    }
     
     public void Damage()
     {
