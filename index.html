@@ -48,14 +48,29 @@
       3. How to create a tag? at the top of inspector view, select 'tag' and choose 'add tag'. then, you can use 'other.tag' in the OnTerrigerEntr to understand what is object.
     </p>
     <p>
-      4. How to get component? other.transform.GetComponent<component>()
+      4. How to get component? other.transform.GetComponent&lt;component&gt;()
     </p>
     <h3>7. Spawn Manager</h3>
     <p>
       1. This course show us how to use coroutine to have a routin in our game such as spawn Enemy. this is how you could use a coroutin.
       <p>
-       1.1. first of all, we need a method with IEnuma
-      </p>
+       1.1. first of all, we need a method with IEnumerator method. this kind of method can have special return type called 'yield return'. this return type means that this methid stops for amount of time and start continue other stuff. and after
+       times passed, game return to this method and do the rest of method.
+       <p>
+        1.2. return type of IEnumerator method: new WaitFor...();
+       </p>
+       
     </p>
+    <p>
+      2. We can use GameObjcet.Find to find a object in game view. example: GameObjcet.Find("Player").GetComponent<Player>()
+    </p>
+    <p>
+      3. how to set parents of GameObject? using {Game-Object-Name}.transform.parents
+    </p>
+    <h3>8.  Prototype to Production</h3>
+    <p>
+      1. 
+    </p>
+
   </body>
 </html>
