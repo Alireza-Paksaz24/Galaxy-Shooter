@@ -7,13 +7,15 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    private float _speed;
+    
+    [SerializeField] private float[] _rangeSpeed = new float[2];
     // Start is called before the first frame update
     void Start()
     {
-        _speed = Random.Range(2.0f, 10.0f);
-        var randomY = Random.Range(-7.9f, 7.9f);
-        this.transform.position = new Vector3(randomY, 7.5f, -1.5f);
+        _speed = Random.Range(_rangeSpeed[0], _rangeSpeed[1]);
+        var randomX = Random.Range(-9.5f, 9.5f);
+        this.transform.position = new Vector3(randomX, 7, 0);
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
     }
     
     //colider handler
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {

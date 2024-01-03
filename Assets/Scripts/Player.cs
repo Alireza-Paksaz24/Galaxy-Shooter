@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
         {
             _nextFire += _fireRate;
-            Instantiate(_Laser, this.transform.position + new Vector3(0, 0.7f, 0), Quaternion.identity);
+            Instantiate(_Laser, this.transform.position + new Vector3(0, 0.81f, 0), Quaternion.identity);
         }
     }
     
@@ -70,10 +70,10 @@ public class Player : MonoBehaviour
             this.transform.position = new Vector3(-10,transform.position.y,transform.position.z);
         else if (this.transform.position.x <= -10)
             this.transform.position = new Vector3(10.6f,transform.position.y,transform.position.z);
-        if (this.transform.position.y >= 6.4)
-            this.transform.position = new Vector3(transform.position.x,-5,transform.position.z);
-        else if (this.transform.position.y <= -5)
-            this.transform.position = new Vector3(transform.position.x,6.4f,transform.position.z);
+        if (this.transform.position.y >= 5.75)
+            this.transform.position = new Vector3(transform.position.x,5.75f,transform.position.z);
+        else if (this.transform.position.y <= -3.8)
+            this.transform.position = new Vector3(transform.position.x,-3.8f,transform.position.z);
 
     }
     
