@@ -11,9 +11,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int _speed = 15;
 
-    [SerializeField] private GameObject _Laser;
+    [SerializeField] private GameObject _laser;
 
     [SerializeField] private float _fireRate = 0.5f;
+
+    [SerializeField] private GameObject _tripleLaser;
+
+    private bool isTripleShotActive = false;
 
     private SpawnManager _spawnManager;
     
@@ -37,7 +41,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
         {
             _nextFire += _fireRate;
-            Instantiate(_Laser, this.transform.position + new Vector3(0, 0.81f, 0), Quaternion.identity);
+            if (isTripleShotActive)
+                Instantiate(_tripleLaser, this.transform.position + new Vector3(-0.6881274f,-0.140737f,0.1370336f), Quaternion.identity);
+            else
+                Instantiate(_laser, this.transform.position + new Vector3(0, 0.81f, 0), Quaternion.identity);
         }
     }
     
