@@ -24,6 +24,12 @@ public class SpawnManager : MonoBehaviour
         {
             var spawnedEnemy = Instantiate(enemy,new Vector3(10,11,12),Quaternion.identity);
             spawnedEnemy.transform.parent = _enemyContainer.transform;
+            if (Time.time > 20.0f)
+            {
+                var spawnedSecondEnemy = Instantiate(enemy, new Vector3(10, 11, 12), Quaternion.identity);
+                spawnedSecondEnemy.transform.parent = _enemyContainer.transform;
+            }
+
             yield return new WaitForSeconds(5.0f);
         }
     }

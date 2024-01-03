@@ -96,4 +96,16 @@ public class Player : MonoBehaviour
             _spawnManager.OnPlayerDeath();
         }
     }
+
+    public void SetTripleShot(bool status)
+    {
+        isTripleShotActive = status;
+        StartCoroutine(DisableTripleShot());
+    }
+
+    IEnumerator DisableTripleShot()
+    {
+        yield return new WaitForSeconds(10.0f);
+        isTripleShotActive = false;
+    }
 }
