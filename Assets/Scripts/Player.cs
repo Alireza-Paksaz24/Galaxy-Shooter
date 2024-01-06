@@ -17,7 +17,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject _tripleLaser;
 
+    private GameObject shield;
     private bool isTripleShotActive = false;
+
+    private bool isShieldActive = false;
     
     private SpawnManager _spawnManager;
     
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shield = this.transform.GetChild(0).gameObject;
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
     }
 
@@ -88,13 +92,16 @@ public class Player : MonoBehaviour
     
     public void Damage()
     {
-        --lives;
-        Debug.Log(lives);
-        if (lives == 0)
+        if (isShieldActive)
         {
-            Destroy(this.gameObject);
+            --lives;
+            Debug.Log(lives);
+            if (lives == 0)
+            {
+                Destroy(this.gameObject);
 
-            _spawnManager.OnPlayerDeath();
+                _spawnManager.OnPlayerDeath();
+            }
         }
     }
 
@@ -109,6 +116,13 @@ public class Player : MonoBehaviour
         _speed = 30;
         StartCoroutine(DisablePowerUp(1));
     }
+
+    public void SetShield(bool status)
+    {
+        isShieldActive = status;
+        shield.SetActive(true);
+        StartCoroutine(DisablePowerUp(2));
+    }
     IEnumerator DisablePowerUp(short powerUpID)
     {
         yield return new WaitForSeconds(5.0f);
@@ -116,6 +130,11 @@ public class Player : MonoBehaviour
             isTripleShotActive = false;
         else if (powerUpID == 1)
             _speed = 15;
+        else
+        {
+            isShieldActive = false;
+            shield.SetActive(false);
+        }
     }
 
 

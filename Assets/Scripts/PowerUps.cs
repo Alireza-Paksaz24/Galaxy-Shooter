@@ -27,15 +27,21 @@ public class PowerUps : MonoBehaviour
     // OnTrigerEnter method. if player enter, Power up will be activated
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (this.tag == "PowerUp_TripleShot" && other.tag == "Player")
+        if (other.tag == "Player")
         {
-            other.GetComponent<Player>().SetTripleShot(true);
-            Destroy(this.gameObject,0.1f);   
-        }
-        else if (this.tag == "PowerUp_Speed" && other.tag == "Player")
-        {
-            other.GetComponent<Player>().SetSpeedUp(true);
-            Destroy(this.gameObject,0.1f);  
+            if (this.tag == "PowerUp_TripleShot" && other.tag == "Player")
+            {
+                other.GetComponent<Player>().SetTripleShot(true);
+            }
+            else if (this.tag == "PowerUp_Speed" && other.tag == "Player")
+            {
+                other.GetComponent<Player>().SetSpeedUp(true);
+            }
+            else if (this.tag == "PowerUP_Shield")
+            {
+                other.GetComponent<Player>().SetShield(true);
+            }
+            Destroy(this.gameObject, 0.1f);
         }
     }
 }
