@@ -3,11 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Tripleshot : MonoBehaviour
+public class PowerUps : MonoBehaviour
 {
 
     private float _speed = 3.0f;
+
+    // Start is called in first frame
+    private void Start()
+    {
+        this.transform.position = new Vector3(Random.Range(-9.5f, 9.5f), 7, 0);
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,11 +27,15 @@ public class Tripleshot : MonoBehaviour
     // OnTrigerEnter method. if player enter, Power up will be activated
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (this.tag == "PowerUp_TripleShot" && other.tag == "Player")
         {
             other.GetComponent<Player>().SetTripleShot(true);
-            Destroy(this.gameObject,0.1f);
+            Destroy(this.gameObject,0.1f);   
         }
-        
+        else if (this.tag == "PowerUp_Speed" && other.tag == "Player")
+        {
+            other.GetComponent<Player>().SetSpeedUp(true);
+            Destroy(this.gameObject,0.1f);  
+        }
     }
 }

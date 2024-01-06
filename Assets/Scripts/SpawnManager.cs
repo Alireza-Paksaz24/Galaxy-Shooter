@@ -9,14 +9,15 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject _enemyContainer;
 
-    [SerializeField] private GameObject _tripleShot;
+    [SerializeField] private GameObject[] _powerUps;
+    
     private bool _stopSpwaning = false;
         
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnEnemies());
-        StartCoroutine(SpawnTripleShot());
+        StartCoroutine(SpawnPowerUps());
     }
 
     //spawn enemies co-routin function
@@ -37,12 +38,13 @@ public class SpawnManager : MonoBehaviour
     }
     
     //Spawn Triple-Shot Power up Icon
-    IEnumerator SpawnTripleShot()
+    IEnumerator SpawnPowerUps()
     {
         while (!_stopSpwaning)
         {
-            yield return new WaitForSeconds(Random.Range(10.0f,20.0f));
-            var spawnedPowerUp = Instantiate(_tripleShot);
+            yield return new WaitForSeconds(Random.Range(0,10.0f));
+            var powerUpID = Random.Range(0, 2);
+            var spawnedPowerUp = Instantiate(_powerUps[powerUpID]);
             spawnedPowerUp.transform.parent = _enemyContainer.transform;
         }
     }

@@ -18,10 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _tripleLaser;
 
     private bool isTripleShotActive = false;
-
+    
     private SpawnManager _spawnManager;
     
     private float _nextFire = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -100,12 +101,22 @@ public class Player : MonoBehaviour
     public void SetTripleShot(bool status)
     {
         isTripleShotActive = status;
-        StartCoroutine(DisableTripleShot());
+        StartCoroutine(DisablePowerUp(0));
+    }
+    
+    public void SetSpeedUp(bool status)
+    {
+        _speed = 30;
+        StartCoroutine(DisablePowerUp(1));
+    }
+    IEnumerator DisablePowerUp(short powerUpID)
+    {
+        yield return new WaitForSeconds(5.0f);
+        if (powerUpID == 0)
+            isTripleShotActive = false;
+        else if (powerUpID == 1)
+            _speed = 15;
     }
 
-    IEnumerator DisableTripleShot()
-    {
-        yield return new WaitForSeconds(10.0f);
-        isTripleShotActive = false;
-    }
+
 }
