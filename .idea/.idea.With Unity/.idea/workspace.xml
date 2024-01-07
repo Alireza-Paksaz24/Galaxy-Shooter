@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2de0c5b6-f8ce-4394-bc81-17bc2252fc6a" name="Changes" comment="Fix Player Movement &amp; Spawn Enemies After Palyer Death">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.With Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.With Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI_Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Shields.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Shields.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main_Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main_Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,5 +145,24 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Fix Player Movement &amp; Spawn Enemies After Palyer Death" />
     <option name="LAST_COMMIT_MESSAGE" value="Fix Player Movement &amp; Spawn Enemies After Palyer Death" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Enemy.cs</url>
+          <line>42</line>
+          <properties documentPath="C:\Users\apaks\Desktop\Galaxy Shooter\With Unity\Assets\Scripts\Enemy.cs" initialLine="42" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="1167" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1175" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

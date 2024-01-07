@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int lives = 3;
+    private int lives = 1;
 
     [SerializeField] private int _speed = 15;
 
