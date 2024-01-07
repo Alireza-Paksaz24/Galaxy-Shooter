@@ -44,8 +44,11 @@ public class SpawnManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(0,10.0f));
             var powerUpID = Random.Range(0, _powerUps.Length);
-            var spawnedPowerUp = Instantiate(_powerUps[powerUpID]);
-            spawnedPowerUp.transform.parent = _enemyContainer.transform;
+            if (!_stopSpwaning)
+            {
+                var spawnedPowerUp = Instantiate(_powerUps[powerUpID]);
+                spawnedPowerUp.transform.parent = _enemyContainer.transform;
+            }
         }
     }
     

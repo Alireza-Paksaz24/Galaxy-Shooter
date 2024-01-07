@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _tripleLaser;
 
     private GameObject shield;
+    
     private bool isTripleShotActive = false;
 
     private bool isShieldActive = false;
@@ -96,13 +97,14 @@ public class Player : MonoBehaviour
             Debug.Log(lives);
             if (lives == 0)
             {
-                Destroy(this.gameObject);
                 _spawnManager.OnPlayerDeath();
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (var i in enemies)
                 {
                     i.GetComponent<Enemy>().GameOver();
                 }
+                GameObject.Find("UI_Manager").GetComponent<UI_Manager>().GameOver();
+                Destroy(this.gameObject);
             }
         }
     }

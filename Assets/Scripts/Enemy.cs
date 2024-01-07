@@ -31,9 +31,9 @@ public class Enemy : MonoBehaviour
         this.transform.Translate(Vector3.down * _speed * Time.deltaTime);
         if (this.transform.position.y < -4.7f)
         {
-            Start();
             if (_gameOver)
                 Destroy(gameObject);
+            Start();
         }
     }
     
