@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour
         {
             if (_gameOver)
                 Destroy(gameObject);
-            Start();
+            else
+                Start();
         }
     }
     

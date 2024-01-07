@@ -25,15 +25,13 @@ public class SpawnManager : MonoBehaviour
     {
         while (!_stopSpwaning)
         {
-            var spawnedEnemy = Instantiate(enemy,new Vector3(10,11,12),Quaternion.identity);
-            spawnedEnemy.transform.parent = _enemyContainer.transform;
-            if (Time.time > 20.0f)
+            yield return new WaitForSeconds(3.0f);
+            for (float i = Time.time; i >= 0.0f; i -= 30.0f)
             {
                 var spawnedSecondEnemy = Instantiate(enemy, new Vector3(10, 11, 12), Quaternion.identity);
                 spawnedSecondEnemy.transform.parent = _enemyContainer.transform;
             }
-
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(2.0f);
         }
     }
     
