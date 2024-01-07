@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private GameObject _gameOver;
 
     [SerializeField] private GameObject _resetText;
+
+    [SerializeField] private GameObject _livesUI;
+
+    [SerializeField] private Sprite[] _livesSprites;
 
     private bool _isGameOver = false;
     
@@ -36,6 +41,11 @@ public class UI_Manager : MonoBehaviour
         StartCoroutine(GameOverRoutin());
         _resetText.SetActive(true);
         _isGameOver = true;
+    }
+
+    public void UpdateLives(int lives)
+    {
+        _livesUI.GetComponent<Image>().sprite = _livesSprites[lives];
     }
 
     IEnumerator GameOverRoutin()

@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         if (!isShieldActive)
         {
             --lives;
-            Debug.Log(lives);
+            _uiManager.UpdateLives(lives);
             if (lives == 0)
             {
                 _spawnManager.OnPlayerDeath();
