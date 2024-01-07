@@ -27,7 +27,7 @@ public class UI_Manager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R) && _gameOver)
         {
-            SceneManager.LoadScene("Scenes/Game");
+            SceneManager.LoadScene(1);
         }
     }
 
