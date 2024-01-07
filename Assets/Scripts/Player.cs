@@ -72,29 +72,14 @@ public class Player : MonoBehaviour
         var vector = new Vector3(0, 0, 0);
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        if (horizontal > 0.0f)
-        {
-            vector.x = _speed * horizontal *Time.deltaTime;
-        }
-        else if (horizontal < 0.0f)
-        {
-            vector.x = _speed * horizontal *Time.deltaTime;
-        }
-
-        if (vertical > 0.0f)
-        {
-            vector.y = _speed * vertical *Time.deltaTime;
-        }
-        else if (vertical < 0.0f)
-        {
-            vector.y = _speed * vertical *Time.deltaTime;
-        }
+        vector.x = _speed * horizontal *Time.deltaTime;
+        vector.y = _speed * vertical *Time.deltaTime;
         //Check if cube is outside of screen
         this.transform.Translate(vector);
-        if (this.transform.position.x >= 10.6)
-            this.transform.position = new Vector3(-10,transform.position.y,transform.position.z);
-        else if (this.transform.position.x <= -10)
-            this.transform.position = new Vector3(10.6f,transform.position.y,transform.position.z);
+        if (this.transform.position.x >= 9.2)
+            this.transform.position = new Vector3(9.2f,transform.position.y,transform.position.z);
+        else if (this.transform.position.x <= -9.5)
+            this.transform.position = new Vector3(-9.5f,transform.position.y,transform.position.z);
         if (this.transform.position.y >= 5.75)
             this.transform.position = new Vector3(transform.position.x,5.75f,transform.position.z);
         else if (this.transform.position.y <= -3.8)
@@ -105,15 +90,19 @@ public class Player : MonoBehaviour
     
     public void Damage()
     {
-        if (isShieldActive)
+        if (!isShieldActive)
         {
             --lives;
             Debug.Log(lives);
             if (lives == 0)
             {
                 Destroy(this.gameObject);
-
                 _spawnManager.OnPlayerDeath();
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (var i in enemies)
+                {
+                    i.GetComponent<Enemy>().GameOver();
+                }
             }
         }
     }

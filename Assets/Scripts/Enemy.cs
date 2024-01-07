@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float[] _rangeSpeed = new float[2];
 
     private Player _playerScript;
+
+    private bool _gameOver = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +27,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         this.transform.Translate(Vector3.down * _speed * Time.deltaTime);
         if (this.transform.position.y < -4.7f)
+        {
             Start();
+            if (_gameOver)
+                Destroy(gameObject);
+        }
     }
     
     //colider handler
@@ -44,5 +52,11 @@ public class Enemy : MonoBehaviour
             _playerScript.AddScore(_speed);
             Destroy(this.gameObject);
         }
+    }
+    
+    //When Game is Over
+    public void GameOver()
+    {
+        _gameOver = true;
     }
 }
