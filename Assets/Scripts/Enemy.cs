@@ -10,9 +10,12 @@ public class Enemy : MonoBehaviour
     private float _speed;
     
     [SerializeField] private float[] _rangeSpeed = new float[2];
+
+    private Player _playerScript;
     // Start is called before the first frame update
     void Start()
     {
+        _playerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
         _speed = Random.Range(_rangeSpeed[0], _rangeSpeed[1]);
         var randomX = Random.Range(-9.5f, 9.5f);
         this.transform.position = new Vector3(randomX, 7, 0);
@@ -36,6 +39,10 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
         else if (other.tag == "Laser")
+        {
+            Destroy(other.gameObject);
+            _playerScript.AddScore(_speed);
             Destroy(this.gameObject);
+        }
     }
 }

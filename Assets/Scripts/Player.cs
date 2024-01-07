@@ -24,13 +24,26 @@ public class Player : MonoBehaviour
     
     private SpawnManager _spawnManager;
     
-    private float _nextFire = 0;
+    private UI_Manager _uiManager;
     
+    private float _nextFire = 0;
+
+    private int _score = 0;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         shield = this.transform.GetChild(0).gameObject;
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _uiManager = GameObject.Find("UI_Manager").GetComponent<UI_Manager>();
+        
+        if (_spawnManager == null)
+            Debug.LogError("Spwan Manager in null");
+        
+        if (_spawnManager == null)
+            Debug.LogError("Spwan Manager in null");
+
     }
 
     // Update is called once per frame
@@ -137,5 +150,9 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    public void AddScore(float point)
+    {
+        _score += (int)point;
+        _uiManager.UpdateScore(_score);
+    }
 }
