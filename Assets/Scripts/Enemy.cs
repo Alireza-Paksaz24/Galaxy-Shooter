@@ -20,9 +20,9 @@ public class Enemy : MonoBehaviour
     {
         var player = GameObject.FindWithTag("Player");
         if (player == null)
-        {
-            Debug.LogError("Player is Null");
+        { 
             Destroy(this.gameObject);
+            return;
         }
         _playerScript = player.GetComponent<Player>();
         _speed = Random.Range(_rangeSpeed[0], _rangeSpeed[1]);

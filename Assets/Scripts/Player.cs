@@ -7,15 +7,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int lives = 1;
+    
+    //init Variables
+    private int lives = 3;
 
-    [SerializeField] private int _speed = 15;
-
-    [SerializeField] private GameObject _laser;
-
-    [SerializeField] private float _fireRate = 0.5f;
-
-    [SerializeField] private GameObject _tripleLaser;
+    private int _speed = 12;
 
     private GameObject shield;
     
@@ -31,7 +27,14 @@ public class Player : MonoBehaviour
 
     private int _score = 0;
     
+    [SerializeField] private GameObject _laser;
 
+    [SerializeField] private float _fireRate = 0.5f;
+
+    [SerializeField] private GameObject _tripleLaser;
+
+    [SerializeField] private GameObject[] _engines;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +98,10 @@ public class Player : MonoBehaviour
         {
             --lives;
             _uiManager.UpdateLives(lives);
+            if (lives == 2)
+                _engines[0].SetActive(true);
+            else if (lives == 1)
+                _engines[1].SetActive(true);
             if (lives == 0)
             {
                 _spawnManager.OnPlayerDeath();
