@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
         Destroy(this.GetComponent<BoxCollider2D>());
         _speed = 0;
         Destroy(this.gameObject,2.8f);
+        GetComponent<AudioSource>().Play();
     }
 
     //When Game is Over

@@ -29,6 +29,7 @@ public class PowerUps : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GetComponent<AudioSource>().Play();
             if (this.tag == "PowerUp_TripleShot" && other.tag == "Player")
             {
                 other.GetComponent<Player>().SetTripleShot(true);
