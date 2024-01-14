@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     private float _nextFire = 0;
 
     private int _score = 0;
+
+    private AudioSource _audioSource;
     
     [SerializeField] private GameObject _laser;
 
@@ -41,13 +43,15 @@ public class Player : MonoBehaviour
         shield = this.transform.GetChild(0).gameObject;
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UI_Manager").GetComponent<UI_Manager>();
-        
+        _audioSource = GetComponent<AudioSource>();
         if (_spawnManager == null)
             Debug.LogError("Spwan Manager in null");
         
         if (_spawnManager == null)
             Debug.LogError("Spwan Manager in null");
-
+        
+        if (_audioSource == null)
+            Debug.LogError("Audio Source in player is null");
     }
 
     // Update is called once per frame
@@ -67,6 +71,7 @@ public class Player : MonoBehaviour
                 Instantiate(_tripleLaser, this.transform.position + new Vector3(-0.6881274f,-0.140737f,0.1370336f), Quaternion.identity);
             else
                 Instantiate(_laser, this.transform.position + new Vector3(0, 0.81f, 0), Quaternion.identity);
+            _audioSource.Play();
         }
     }
     
