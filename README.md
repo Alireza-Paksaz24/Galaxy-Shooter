@@ -28,8 +28,7 @@ Download the version specific to your OS:
 Provide a brief overview of game controls and how to start playing the game.
 
 ## Built With
-- Unity [version] - The game development platform used
-- [Other tools/libraries used]
+- Unity [21.4.34] - The game development platform used
 
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
