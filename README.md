@@ -20,7 +20,7 @@ Here are some glimpses of "Galaxy Shooter" in action:
 ## Installation
 Download the version specific to your OS:
 - [Windows Version](https://github.com/Alireza-Paksaz24/Galaxy-Shooter/releases/download/0.1/Galaxy-Shooter-V0.1-Windows.zip)
-- [Linux Version](https://github.com/Alireza-Paksaz24/Galaxy-Shooter/releases/download/0.1/Galaxy-Shooter-V0.1-Windows.gz.tar)
+- [Linux Version](https://github.com/Alireza-Paksaz24/Galaxy-Shooter/releases/download/0.1/Galaxy-Shooter-V0.1-Linux.tar.gz)
 - [WebGL Version](https://Alireza-paksaz24.github.io/Galaxy-Shooter/Release/WebGL/index.html)
 - [Android Version](https://github.com/Alireza-Paksaz24/Galaxy-Shooter/releases/download/0.1/Galaxy-Shooter-V0.1-Android.apk)
 

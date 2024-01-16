@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     private int _score = 0;
 
     private AudioSource _audioSource;
+
+    private float _currentGyroY;
     
     [SerializeField] private GameObject _laser;
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         shield = this.transform.GetChild(0).gameObject;
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UI_Manager").GetComponent<UI_Manager>();
@@ -48,6 +51,15 @@ public class Player : MonoBehaviour
         
         if (_audioSource == null)
             Debug.LogError("Audio Source in player is null");
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+            _currentGyroY = Input.gyro.gravity.y;
+            Debug.Log(_currentGyroY);
+        }
+        else
+            Input.gyro.enabled = false;
+        
     }
 
     // Update is called once per frame
@@ -60,7 +72,7 @@ public class Player : MonoBehaviour
     //cooldown for fire laser
     private void FireLaser()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && Time.time > _nextFire)
         {
             _nextFire += _fireRate;
             if (isTripleShotActive)
@@ -68,15 +80,23 @@ public class Player : MonoBehaviour
             else
                 Instantiate(_laser, this.transform.position + new Vector3(0, 0.81f, 0), Quaternion.identity);
             _audioSource.Play();
-        }
+        }   
     }
     
     //move function for players
     private void MovePlayer()
     {
         var vector = new Vector3(0, 0, 0);
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
+        float horizontal;
+        float vertical;
+#if UNITY_ANDROID
+        horizontal = Input.gyro.gravity.x;
+        vertical  = Input.gyro.gravity.y;
+        vertical -= _currentGyroY;
+#else
+        horizontal = Input.GetAxis("Horizontal");
+        vertical  = Input.GetAxis("Vertical");
+#endif
         vector.x = _speed * horizontal *Time.deltaTime;
         vector.y = _speed * vertical *Time.deltaTime;
         //Check if cube is outside of screen
